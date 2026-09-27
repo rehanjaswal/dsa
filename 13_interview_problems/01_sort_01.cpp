@@ -1,22 +1,59 @@
-// two pass solution
+// // two pass solution
+// #include <bits/stdc++.h>
+// using namespace std;
+// void sort01(vector<int>& arr, int n) {
+//     int count0 = 0, count1 = 0;
+//     for (int i = 0; i < n; i++) {
+//         if (arr[i] == 0) count0++;
+//         else count1++;
+//     }
+//     int ptr = 0;
+//     while (count0--) {
+//         arr[ptr] = 0;
+//         ptr++;
+//     }
+//     while (count1--) {
+//         arr[ptr] = 1;
+//         ptr++;
+//     }
+// }
+// int main() {
+//     int n;
+//     cin >> n;
+//     vector<int> arr(n);
+//     for (int i = 0; i < n; i++) cin >> arr[i];
+
+//     sort01(arr, n);
+
+//     for (int i = 0; i < n; i++) {
+//         cout << arr[i] << " ";
+//     }
+// return 0;
+// }
+
+// better solution - two pointer
+
 #include <bits/stdc++.h>
 using namespace std;
 void sort01(vector<int>& arr, int n) {
-    int count0 = 0, count1 = 0;
+    int l = 0, r = n - 1;
+    while (l <= r) {
+        if (arr[l] == 0) {
+            l++;
+        }
+        else {
+            swap(arr[l], arr[r]);
+            r--;
+        }
+    }
     for (int i = 0; i < n; i++) {
-        if (arr[i] == 0) count0++;
-        else count1++;
+        cout << arr[i] << " ";
     }
-    int ptr = 0;
-    while (count0--) {
-        arr[ptr] = 0;
-        ptr++;
-    }
-    while (count1--) {
-        arr[ptr] = 1;
-        ptr++;
-    }
+    cout << endl;
+    
+    return;
 }
+
 int main() {
     int n;
     cin >> n;
@@ -24,10 +61,6 @@ int main() {
     for (int i = 0; i < n; i++) cin >> arr[i];
 
     sort01(arr, n);
-
-    for (int i = 0; i < n; i++) {
-        cout << arr[i] << " ";
-    }
+    
 return 0;
 }
-
