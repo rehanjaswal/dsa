@@ -1,6 +1,6 @@
 #include <bits/stdc++.h>
 using namespace std;
-int elementsLesserThanX(vector<int>& nums, int x) {
+int elementsLesserThanOrEqualToX(vector<int>& nums, int x) {
     sort(nums.begin(), nums.end());
     int l = 0, r = nums.size() - 1, ans = -1;
     while (l <= r) {
@@ -21,6 +21,6 @@ int main() {
     vector<int> nums(n);
     for (int i = 0; i < n; i++) cin >> nums[i];
 
-    cout << elementsLesserThanX(nums, x) << endl;
+    cout << elementsLesserThanOrEqualToX(nums, x) << endl;
 return 0;
 }
