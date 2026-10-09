@@ -1,3 +1,4 @@
+// TC -> O(n * log(stalls[n - 1] - stalls[0]))
 #include <bits/stdc++.h>
 using namespace std;
 
