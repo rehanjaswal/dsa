@@ -27,7 +27,7 @@
 // }
 
 // optimal sieve approach here goes nothing
-
+// TC -> O(N log(log N)) and SC -> O(N)
 #include <bits/stdc++.h>
 using namespace std;
 void solve() {
