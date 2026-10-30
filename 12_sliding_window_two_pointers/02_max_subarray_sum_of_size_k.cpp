@@ -1,20 +1,23 @@
-// TC -> O(n^2) and SC -> O(1)
 #include <bits/stdc++.h>
 using namespace std;
-int main() {
-    int n, k, ans = INT_MIN;
-    cin >> n >> k;
-    vector<int> arr(n);
-    for (int i = 0; i < n; i++) cin >> arr[i];
+int maxSum(vector<int>& nums, int k) {
+    int ans = INT_MIN, n = nums.size();
     for (int l = 0; l < n; l++) {
         int sum = 0;
         for (int r = l; r < n; r++) {
-            sum += arr[r];
+            sum += nums[r];
             if (r - l + 1 == k) {
                 ans = max(ans, sum);
             }
         }
     }
-    cout << ans << endl;
+    return ans;
+}
+int main() {
+    int n, k;
+    cin >> n >> k;
+    vector<int> nums(n);
+    for (int i = 0; i < n; i++) cin >> nums[i];
+    cout << maxSum(nums, k) << endl;
 return 0;
 }
