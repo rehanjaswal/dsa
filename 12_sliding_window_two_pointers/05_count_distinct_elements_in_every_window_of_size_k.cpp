@@ -1,25 +1,27 @@
 #include <bits/stdc++.h>
 using namespace std;
-int main() {
+void solve() {
     int n, k;
     cin >> n >> k;
-    vector<int> arr(n);
-    for (int i = 0; i < n; i++) cin >> arr[i];
+    vector<int> nums(n);
+    for (int i = 0; i < n; i++) cin >> nums[i];
+    
     unordered_map<int, int> freq;
-
-    // build first window
-    for (int i = 0; i < k; i++) freq[arr[i]]++;
+    // first window
+    for (int i = 0; i < k; i++) {
+        freq[nums[i]]++;
+    }
     cout << freq.size() << " ";
-    // further windows
+    // move to further windows
     for (int i = k; i < n; i++) {
-        // remove outgoing element
-        freq[arr[i - k]]--;
-        // if the frequency of the removed element becomes zero, delete its key
-        if (freq[arr[i - k]] == 0) freq.erase(arr[i - k]);
-        // add incoming element
-        freq[arr[i]]++;
-        
+        freq[nums[i - k]]--;                                 // remove outgoing element
+        if (freq[nums[i - k]] == 0) freq.erase(nums[i - k]); // delete the key if its value is zero
+        freq[nums[i]]++;                                       // include incoming element
         cout << freq.size() << " ";
     }
+
+}
+int main() {
+    solve();
 return 0;
 }

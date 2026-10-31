@@ -2,22 +2,32 @@
 using namespace std;
 bool isVowel(char ch) {
     ch = tolower(ch);
-    return ch == 'a' || ch == 'e' || ch == 'i' || ch == 'o' || ch == 'u';
+    return ch == 'a' || ch == 'e' || ch == 'i' || ch =='o' || ch == 'u';
 }
 int main() {
-    string s;
-    cin >> s;
     int k;
     cin >> k;
+    string s;
+    cin >> s;
     int count = 0;
-    for (int i = 0; i < k; i++) {
-        if (isVowel(s[i])) count++;
+    for (int i = 0; i < k; i++) { // create first sliding window
+        if (isVowel(s[i])) {
+            count++;
+        }
     }
     cout << count << " ";
+
     for (int i = k; i < s.size(); i++) {
-        if (isVowel(s[i])) count++;
-        if (isVowel(s[i - k])) count--;
+        if (isVowel(s[i])) {
+            count++;
+        }
+        if (isVowel(s[i - k])) {
+            count--;
+        }
         cout << count << " ";
     }
-return 0;
+    return 0;
 }
+
+// TC -> O(N)
+// SC -> O(1)
