@@ -1,24 +1,26 @@
-// TC -> O(n) and SC -> O(1)
+// find max subarray sum using the sliding window technique
 #include <bits/stdc++.h>
 using namespace std;
 int main() {
     int n, k;
     cin >> n >> k;
-    vector<int> arr(n);
-    for (int i = 0; i < n; i++) cin >> arr[i];
-    
-    int sum = 0, ans = INT_MIN;
-    // build the first sliding window
-    for (int i = 0; i < k; i++) {
-        sum += arr[i];
+    vector<int> nums(n);
+    for (int i = 0; i < n; i++) cin >> nums[i];
+    int ans = INT_MIN, sum = 0;
+    for (int i = 0; i < k; i++) { // create first sliding window from 0 to k
+        sum += nums[i];
     }
     ans = sum;
-    // calculate the sums of the remaining sliding windows, and compare var sum with var ans
+
     for (int i = k; i < n; i++) {
-        sum += arr[i];
-        sum -= arr[i - k];
+        sum += nums[i];
+        sum -= nums[i - k];
         ans = max(ans, sum);
     }
+
     cout << ans << endl;
 return 0;
 }
+
+// TC -> O(N)
+// SC -> O(1)
