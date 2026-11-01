@@ -6,7 +6,8 @@ int main() {
     vector<int> nums(n);
     for (int i = 0; i < n; i++) cin >> nums[i];
     
-    int l = 0, sum = 0, minLen = INT_MAX;
+    int sum = 0, minLen = INT_MAX;
+    int l = 0;
     for (int r = 0; r < n; r++) {
         sum += nums[r];
         while (sum > k) {
@@ -16,5 +17,8 @@ int main() {
         }
     }
     cout << minLen << endl;
-return 0;
+    return 0;
 }
+
+// TC -> O(n)
+// SC -> O(1)
