@@ -9,10 +9,10 @@ int main() {
     for (int i = 0; i < n; i++) cin >> nums[i];
 
     for (int i = 0; i < n; i++) {
-    int element = nums[i], correctIndex = nums[i];
-    if (nums[correctIndex] != element) {
-        swap(nums[correctIndex], nums[i]);
-        i--;
+        int correctIndex = nums[i];
+        if (nums[i] != nums[correctIndex]) {
+            swap(nums[i], nums[correctIndex]);
+            i--; // stay at the same index as long as above condition holds true
         }
     }
 
